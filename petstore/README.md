@@ -13,9 +13,8 @@ petstore/
 │   ├── tests/                  # Integration tests
 │   ├── docs/                   # Auto-generated Swagger docs
 │   ├── Makefile                # Build/test/generate tasks
-│   ├── .cursorrules            # AI assistant instructions
-│   ├── IMPLEMENTATION.md       # Detailed implementation guide
-│   └── petstore_swagger.yml    # OpenAPI 3.0 spec (source of truth)
+│   ├── petstore_swagger.yml    # OpenAPI 3.0 spec (source of truth)
+│   └── agent.md                # Backend architecture docs
 ├── ui/                         # Frontend (Alpine.js + Tailwind CSS)
 │   ├── index.html              # Pet management
 │   ├── categories.html         # Category management
@@ -90,7 +89,7 @@ make install-tools     # Install oapi-codegen, swag, air
 make help              # Show all commands
 ```
 
-For detailed backend documentation, see [`backend/IMPLEMENTATION.md`](backend/IMPLEMENTATION.md).
+For detailed backend documentation, see [`backend/agent.md`](backend/agent.md).
 
 ## Frontend
 
