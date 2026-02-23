@@ -1,0 +1,605 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "REST API for a petstore application built with Go Fiber",
+        "title": "Petstore API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "email": "support@petstore.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "paths": {
+        "/category": {
+            "put": {
+                "description": "Update an existing category by Id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Update an existing category",
+                "parameters": [
+                    {
+                        "description": "Category object that needs to be updated",
+                        "name": "category",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/petstore_internal_models.Category"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/petstore_internal_models.Category"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a new category with the input payload. ID will be auto-generated, omit it from the request.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Add a new category to the store",
+                "parameters": [
+                    {
+                        "description": "Category object that needs to be added (without id)",
+                        "name": "category",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/petstore_internal_models.CreateCategoryRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/petstore_internal_models.Category"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/category/listAll": {
+            "get": {
+                "description": "Returns a list of all categories",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Get all categories",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/petstore_internal_models.Category"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/category/{categoryId}": {
+            "delete": {
+                "description": "Delete a category by ID",
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Deletes a category",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Category ID",
+                        "name": "categoryId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pet": {
+            "put": {
+                "description": "Update an existing pet by Id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "pets"
+                ],
+                "summary": "Update an existing pet",
+                "parameters": [
+                    {
+                        "description": "Pet object that needs to be updated",
+                        "name": "pet",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/petstore_internal_models.Pet"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/petstore_internal_models.Pet"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add a new pet with the input payload. ID will be auto-generated, omit it from the request.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "pets"
+                ],
+                "summary": "Add a new pet to the store",
+                "parameters": [
+                    {
+                        "description": "Pet object that needs to be added (without id)",
+                        "name": "pet",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/petstore_internal_models.CreatePetRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/petstore_internal_models.Pet"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pet/findByStatus": {
+            "get": {
+                "description": "Multiple status values can be provided",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "pets"
+                ],
+                "summary": "Finds pets by status",
+                "parameters": [
+                    {
+                        "enum": [
+                            "available",
+                            "pending",
+                            "sold"
+                        ],
+                        "type": "string",
+                        "description": "Status values",
+                        "name": "status",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/petstore_internal_models.Pet"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pet/{petId}": {
+            "get": {
+                "description": "Returns a single pet",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "pets"
+                ],
+                "summary": "Find pet by ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID of pet to return",
+                        "name": "petId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/petstore_internal_models.Pet"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Updates a pet with form data",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "pets"
+                ],
+                "summary": "Updates a pet in the store with form data",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID of pet that needs to be updated",
+                        "name": "petId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Name of pet",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Status of pet",
+                        "name": "status",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/petstore_internal_models.Pet"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Deletes a pet by ID",
+                "tags": [
+                    "pets"
+                ],
+                "summary": "Deletes a pet",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Pet id to delete",
+                        "name": "petId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "petstore_internal_models.Category": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "petstore_internal_models.CategoryReference": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
+        "petstore_internal_models.CreateCategoryRequest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Dogs"
+                }
+            }
+        },
+        "petstore_internal_models.CreatePetRequest": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "$ref": "#/definitions/petstore_internal_models.CategoryReference"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Balu"
+                },
+                "status": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/petstore_internal_models.PetStatus"
+                        }
+                    ],
+                    "example": "available"
+                }
+            }
+        },
+        "petstore_internal_models.Pet": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "$ref": "#/definitions/petstore_internal_models.Category"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status pet status in the store",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/petstore_internal_models.PetStatus"
+                        }
+                    ]
+                }
+            }
+        },
+        "petstore_internal_models.PetStatus": {
+            "type": "string",
+            "enum": [
+                "available",
+                "pending",
+                "sold"
+            ],
+            "x-enum-varnames": [
+                "PetStatusAvailable",
+                "PetStatusPending",
+                "PetStatusSold"
+            ]
+        }
+    }
+}

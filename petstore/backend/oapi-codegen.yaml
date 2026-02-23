@@ -1,0 +1,7 @@
+package: models
+output: internal/models/generated.go
+generate:
+  models: true
+  embedded-spec: false
+output-options:
+  skip-prune: false
